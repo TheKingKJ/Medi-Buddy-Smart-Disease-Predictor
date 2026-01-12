@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction | Medi-buddy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar - Same as index.html -->
+            <div class="col-md-3 col-lg-2 bg-dark sidebar">
+                <div class="sidebar-heading text-center py-4">
+                    <h2 class="text-white"><i class="bi bi-hospital"></i> Medi-buddy</h2>
+                    <p class="text-light">Smart Disease Predictor</p>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="/static/html/index.html" class="list-group-item list-group-item-action bg-dark text-white">
+                        <i class="bi bi-house-door me-2"></i> Home
+                    </a>
+                    <a href="/static/html/diabetes.html" class="list-group-item list-group-item-action bg-dark text-white active">
+                        <i class="bi bi-activity me-2"></i> Diabetes Prediction
+                    </a>
+                    <a href="/static/html/heart.html" class="list-group-item list-group-item-action bg-dark text-white">
+                        <i class="bi bi-heart me-2"></i> Heart Disease Prediction
+                    </a>
+                    <a href="/static/html/parkinsons.html" class="list-group-item list-group-item-action bg-dark text-white">
+                        <i class="bi bi-person me-2"></i> Parkinsons Prediction
+                    </a>
+                    <a href="/static/html/breast-cancer.html" class="list-group-item list-group-item-action bg-dark text-white">
+                        <i class="bi bi-asterisk me-2"></i> Breast Cancer Prediction
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Main content -->
+            <div class="col-md-9 col-lg-10 main-content">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex align-items-center">
+                        <i class="bi bi-activity h1 text-primary me-3"></i>
+                        <h1 class="h3 mb-0 text-primary">Diabetes Prediction</h1>
+                    </div>
+                    <div class="card-body">
+                        <form id="diabetesForm">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label for="pregnancies" class="form-label">Number of Pregnancies</label>
+                                    <input type="number" step="any" class="form-control" id="pregnancies" name="pregnancies" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="glucose" class="form-label">Glucose Level</label>
+                                    <input type="number" step="any" class="form-control" id="glucose" name="glucose" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="bloodpressure" class="form-label">Blood Pressure value</label>
+                                    <input type="number" step="any" class="form-control" id="bloodpressure" name="bloodpressure" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="skinthickness" class="form-label">Skin Thickness value</label>
+                                    <input type="number" step="any" class="form-control" id="skinthickness" name="skinthickness" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="insulin" class="form-label">Insulin Level</label>
+                                    <input type="number" step="any" class="form-control" id="insulin" name="insulin" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="bmi" class="form-label">BMI value</label>
+                                    <input type="number" step="any" class="form-control" id="bmi" name="bmi" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="diabetespedigree" class="form-label">Diabetes Pedigree Function value</label>
+                                    <input type="number" step="any" class="form-control" id="diabetespedigree" name="diabetespedigree" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="age" class="form-label">Age of the Person</label>
+                                    <input type="number" step="any" class="form-control" id="age" name="age" required>
+                                </div>
+                                
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn btn-primary">Get Diabetes Test Result</button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <div id="result" class="mt-4" style="display: none;">
+                            <div class="alert alert-info" role="alert">
+                                <h4 class="alert-heading">Test Result</h4>
+                                <p id="resultText"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h5 class="m-0 font-weight-bold text-primary">About Diabetes Prediction</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>This diabetes prediction tool uses a machine learning model trained on the Pima Indians Diabetes Database. The model analyzes various health metrics to predict the likelihood of diabetes.</p>
+                        
+                        <h6>Input Parameters:</h6>
+                        <ul>
+                            <li><strong>Pregnancies:</strong> Number of times pregnant</li>
+                            <li><strong>Glucose:</strong> Plasma glucose concentration (2 hours in an oral glucose tolerance test)</li>
+                            <li><strong>Blood Pressure:</strong> Diastolic blood pressure (mm Hg)</li>
+                            <li><strong>Skin Thickness:</strong> Triceps skin fold thickness (mm)</li>
+                            <li><strong>Insulin:</strong> 2-Hour serum insulin (mu U/ml)</li>
+                            <li><strong>BMI:</strong> Body mass index (weight in kg/(height in m)²)</li>
+                            <li><strong>Diabetes Pedigree Function:</strong> A function that scores likelihood of diabetes based on family history</li>
+                            <li><strong>Age:</strong> Age in years</li>
+                        </ul>
+                        
+                        <div class="alert alert-warning">
+                            <strong>Disclaimer:</strong> This tool is for educational purposes only and should not replace professional medical advice. Always consult with a healthcare provider for diagnosis and treatment.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/diabetes.js') }}"></script>
+</body>
+</html>

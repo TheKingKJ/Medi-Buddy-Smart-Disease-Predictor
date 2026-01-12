@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parkinsons Prediction | Medi-buddy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar - Same as index.html -->
+            <div class="col-md-3 col-lg-2 bg-dark sidebar">
+                <div class="sidebar-heading text-center py-4">
+                    <h2 class="text-white"><i class="bi bi-hospital"></i> Medi-buddy</h2>
+                    <p class="text-light">Smart Disease Predictor</p>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="/static/html/index.html" class="list-group-item list-group-item-action bg-dark text-white">
+                        <i class="bi bi-house-door me-2"></i> Home
+                    </a>
+                    <a href="/static/html/diabetes.html" class="list-group-item list-group-item-action bg-dark text-white">
+                        <i class="bi bi-activity me-2"></i> Diabetes Prediction
+                    </a>
+                    <a href="/static/html/heart.html" class="list-group-item list-group-item-action bg-dark text-white">
+                        <i class="bi bi-heart me-2"></i> Heart Disease Prediction
+                    </a>
+                    <a href="/static/html/parkinsons.html" class="list-group-item list-group-item-action bg-dark text-white active">
+                        <i class="bi bi-person me-2"></i> Parkinsons Prediction
+                    </a>
+                    <a href="/static/html/breast-cancer.html" class="list-group-item list-group-item-action bg-dark text-white">
+                        <i class="bi bi-asterisk me-2"></i> Breast Cancer Prediction
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Main content -->
+            <div class="col-md-9 col-lg-10 main-content">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex align-items-center">
+                        <i class="bi bi-person h1 text-primary me-3"></i>
+                        <h1 class="h3 mb-0 text-primary">Parkinsons Disease Prediction</h1>
+                    </div>
+                    <div class="card-body">
+                        <form id="parkinsonsForm">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label for="fo" class="form-label">MDVP:Fo(Hz)</label>
+                                    <input type="number" step="any" class="form-control" id="fo" name="fo" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="fhi" class="form-label">MDVP:Fhi(Hz)</label>
+                                    <input type="number" step="any" class="form-control" id="fhi" name="fhi" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="flo" class="form-label">MDVP:Flo(Hz)</label>
+                                    <input type="number" step="any" class="form-control" id="flo" name="flo" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="jitter_percent" class="form-label">MDVP:Jitter(%)</label>
+                                    <input type="number" step="any" class="form-control" id="jitter_percent" name="jitter_percent" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="jitter_abs" class="form-label">MDVP:Jitter(Abs)</label>
+                                    <input type="number" step="any" class="form-control" id="jitter_abs" name="jitter_abs" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="rap" class="form-label">MDVP:RAP</label>
+                                    <input type="number" step="any" class="form-control" id="rap" name="rap" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="ppq" class="form-label">MDVP:PPQ</label>
+                                    <input type="number" step="any" class="form-control" id="ppq" name="ppq" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="ddp" class="form-label">Jitter:DDP</label>
+                                    <input type="number" step="any" class="form-control" id="ddp" name="ddp" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="shimmer" class="form-label">MDVP:Shimmer</label>
+                                    <input type="number" step="any" class="form-control" id="shimmer" name="shimmer" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="shimmer_db" class="form-label">MDVP:Shimmer(dB)</label>
+                                    <input type="number" step="any" class="form-control" id="shimmer_db" name="shimmer_db" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="apq3" class="form-label">Shimmer:APQ3</label>
+                                    <input type="number" step="any" class="form-control" id="apq3" name="apq3" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="apq5" class="form-label">Shimmer:APQ5</label>
+                                    <input type="number" step="any" class="form-control" id="apq5" name="apq5" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="apq" class="form-label">MDVP:APQ</label>
+                                    <input type="number" step="any" class="form-control" id="apq" name="apq" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="dda" class="form-label">Shimmer:DDA</label>
+                                    <input type="number" step="any" class="form-control" id="dda" name="dda" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="nhr" class="form-label">NHR</label>
+                                    <input type="number" step="any" class="form-control" id="nhr" name="nhr" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="hnr" class="form-label">HNR</label>
+                                    <input type="number" step="any" class="form-control" id="hnr" name="hnr" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="rpde" class="form-label">RPDE</label>
+                                    <input type="number" step="any" class="form-control" id="rpde" name="rpde" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="dfa" class="form-label">DFA</label>
+                                    <input type="number" step="any" class="form-control" id="dfa" name="dfa" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="spread1" class="form-label">spread1</label>
+                                    <input type="number" step="any" class="form-control" id="spread1" name="spread1" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="spread2" class="form-label">spread2</label>
+                                    <input type="number" step="any" class="form-control" id="spread2" name="spread2" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="d2" class="form-label">D2</label>
+                                    <input type="number" step="any" class="form-control" id="d2" name="d2" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="ppe" class="form-label">PPE</label>
+                                    <input type="number" step="any" class="form-control" id="ppe" name="ppe" required>
+                                </div>
+                                
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn btn-primary">Get Parkinsons Test Result</button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <div id="result" class="mt-4" style="display: none;">
+                            <div class="alert alert-info" role="alert">
+                                <h4 class="alert-heading">Test Result</h4>
+                                <p id="resultText"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h5 class="m-0 font-weight-bold text-primary">About Parkinsons Disease Prediction</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>This Parkinson's disease prediction tool uses a machine learning model trained on biomedical voice measurements. The model analyzes various acoustic features from sustained phonations to predict the likelihood of Parkinson's disease.</p>
+                        
+                        <h6>Input Parameters:</h6>
+                        <ul>
+                            <li><strong>MDVP measurements:</strong> Various measures of variation in fundamental frequency</li>
+                            <li><strong>Jitter measurements:</strong> Several measures of variation in fundamental frequency</li>
+                            <li><strong>Shimmer measurements:</strong> Several measures of variation in amplitude</li>
+                            <li><strong>NHR and HNR:</strong> Measures of ratio of noise to tonal components in the voice</li>
+                            <li><strong>RPDE:</strong> A nonlinear dynamical complexity measure</li>
+                            <li><strong>DFA:</strong> Signal fractal scaling exponent</li>
+                            <li><strong>Spread measures:</strong> Nonlinear measures of fundamental frequency variation</li>
+                            <li><strong>D2:</strong> A nonlinear dynamical complexity measure</li>
+                            <li><strong>PPE:</strong> A nonlinear measure of fundamental frequency variation</li>
+                        </ul>
+                        
+                        <div class="alert alert-warning">
+                            <strong>Disclaimer:</strong> This tool is for educational purposes only and should not replace professional medical advice. Always consult with a healthcare provider for diagnosis and treatment.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/parkinsons.js') }}"></script>
+</body>
+</html> 

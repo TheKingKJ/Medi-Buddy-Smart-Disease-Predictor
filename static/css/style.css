@@ -1,0 +1,70 @@
+/* Main Styles for Medi-buddy */
+
+/* Sidebar styles */
+.sidebar {
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+    padding-top: 20px;
+}
+
+.sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+}
+
+.list-group-item {
+    border: none;
+    padding: 0.8rem 1.25rem;
+    transition: all 0.3s;
+}
+
+.list-group-item:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.list-group-item.active {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border-color: transparent;
+}
+
+/* Main content */
+.main-content {
+    padding: 20px;
+}
+
+/* Card styles */
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+    margin-bottom: 24px;
+}
+
+.card-header {
+    background-color: #f8f9fc;
+    border-bottom: 1px solid #e3e6f0;
+}
+
+/* Form elements */
+.form-control:focus {
+    border-color: #4e73df;
+    box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+}
+
+/* Alert customization */
+.alert {
+    border-radius: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        min-height: auto;
+        position: relative;
+    }
+    
+    .main-content {
+        padding: 10px;
+    }
+} 

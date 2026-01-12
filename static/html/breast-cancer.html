@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breast Cancer Prediction | Medi-buddy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar - Same as index.html -->
+            <div class="col-md-3 col-lg-2 bg-dark sidebar">
+                <div class="sidebar-heading text-center py-4">
+                    <h2 class="text-white"><i class="bi bi-hospital"></i> Medi-buddy</h2>
+                    <p class="text-light">Smart Disease Predictor</p>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="/static/html/index.html" class="list-group-item list-group-item-action bg-dark text-white">
+                        <i class="bi bi-house-door me-2"></i> Home
+                    </a>
+                    <a href="/static/html/diabetes.html" class="list-group-item list-group-item-action bg-dark text-white">
+                        <i class="bi bi-activity me-2"></i> Diabetes Prediction
+                    </a>
+                    <a href="/static/html/heart.html" class="list-group-item list-group-item-action bg-dark text-white">
+                        <i class="bi bi-heart me-2"></i> Heart Disease Prediction
+                    </a>
+                    <a href="/static/html/parkinsons.html" class="list-group-item list-group-item-action bg-dark text-white">
+                        <i class="bi bi-person me-2"></i> Parkinsons Prediction
+                    </a>
+                    <a href="/static/html/breast-cancer.html" class="list-group-item list-group-item-action bg-dark text-white active">
+                        <i class="bi bi-asterisk me-2"></i> Breast Cancer Prediction
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Main content -->
+            <div class="col-md-9 col-lg-10 main-content">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex align-items-center">
+                        <i class="bi bi-asterisk h1 text-primary me-3"></i>
+                        <h1 class="h3 mb-0 text-primary">Breast Cancer Prediction</h1>
+                    </div>
+                    <div class="card-body">
+                        <form id="breastCancerForm">
+                            <div class="row g-3">
+                                <!-- Mean values -->
+                                <h5 class="col-12 mt-3 mb-2">Mean Values:</h5>
+                                <div class="col-md-4">
+                                    <label for="mean_radius" class="form-label">Mean Radius</label>
+                                    <input type="number" step="any" class="form-control" id="mean_radius" name="mean_radius" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="mean_texture" class="form-label">Mean Texture</label>
+                                    <input type="number" step="any" class="form-control" id="mean_texture" name="mean_texture" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="mean_perimeter" class="form-label">Mean Perimeter</label>
+                                    <input type="number" step="any" class="form-control" id="mean_perimeter" name="mean_perimeter" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="mean_area" class="form-label">Mean Area</label>
+                                    <input type="number" step="any" class="form-control" id="mean_area" name="mean_area" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="mean_smoothness" class="form-label">Mean Smoothness</label>
+                                    <input type="number" step="any" class="form-control" id="mean_smoothness" name="mean_smoothness" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="mean_compactness" class="form-label">Mean Compactness</label>
+                                    <input type="number" step="any" class="form-control" id="mean_compactness" name="mean_compactness" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="mean_concavity" class="form-label">Mean Concavity</label>
+                                    <input type="number" step="any" class="form-control" id="mean_concavity" name="mean_concavity" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="mean_concave_points" class="form-label">Mean Concave Points</label>
+                                    <input type="number" step="any" class="form-control" id="mean_concave_points" name="mean_concave_points" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="mean_symmetry" class="form-label">Mean Symmetry</label>
+                                    <input type="number" step="any" class="form-control" id="mean_symmetry" name="mean_symmetry" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="mean_fractal_dimension" class="form-label">Mean Fractal Dimension</label>
+                                    <input type="number" step="any" class="form-control" id="mean_fractal_dimension" name="mean_fractal_dimension" required>
+                                </div>
+                                
+                                <!-- Error values -->
+                                <h5 class="col-12 mt-3 mb-2">Error Values:</h5>
+                                <div class="col-md-4">
+                                    <label for="radius_error" class="form-label">Radius Error</label>
+                                    <input type="number" step="any" class="form-control" id="radius_error" name="radius_error" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="texture_error" class="form-label">Texture Error</label>
+                                    <input type="number" step="any" class="form-control" id="texture_error" name="texture_error" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="perimeter_error" class="form-label">Perimeter Error</label>
+                                    <input type="number" step="any" class="form-control" id="perimeter_error" name="perimeter_error" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="area_error" class="form-label">Area Error</label>
+                                    <input type="number" step="any" class="form-control" id="area_error" name="area_error" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="smoothness_error" class="form-label">Smoothness Error</label>
+                                    <input type="number" step="any" class="form-control" id="smoothness_error" name="smoothness_error" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="compactness_error" class="form-label">Compactness Error</label>
+                                    <input type="number" step="any" class="form-control" id="compactness_error" name="compactness_error" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="concavity_error" class="form-label">Concavity Error</label>
+                                    <input type="number" step="any" class="form-control" id="concavity_error" name="concavity_error" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="concave_points_error" class="form-label">Concave Points Error</label>
+                                    <input type="number" step="any" class="form-control" id="concave_points_error" name="concave_points_error" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="symmetry_error" class="form-label">Symmetry Error</label>
+                                    <input type="number" step="any" class="form-control" id="symmetry_error" name="symmetry_error" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="fractal_dimension_error" class="form-label">Fractal Dimension Error</label>
+                                    <input type="number" step="any" class="form-control" id="fractal_dimension_error" name="fractal_dimension_error" required>
+                                </div>
+                                
+                                <!-- Worst values -->
+                                <h5 class="col-12 mt-3 mb-2">Worst Values:</h5>
+                                <div class="col-md-4">
+                                    <label for="worst_radius" class="form-label">Worst Radius</label>
+                                    <input type="number" step="any" class="form-control" id="worst_radius" name="worst_radius" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="worst_texture" class="form-label">Worst Texture</label>
+                                    <input type="number" step="any" class="form-control" id="worst_texture" name="worst_texture" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="worst_perimeter" class="form-label">Worst Perimeter</label>
+                                    <input type="number" step="any" class="form-control" id="worst_perimeter" name="worst_perimeter" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="worst_area" class="form-label">Worst Area</label>
+                                    <input type="number" step="any" class="form-control" id="worst_area" name="worst_area" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="worst_smoothness" class="form-label">Worst Smoothness</label>
+                                    <input type="number" step="any" class="form-control" id="worst_smoothness" name="worst_smoothness" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="worst_compactness" class="form-label">Worst Compactness</label>
+                                    <input type="number" step="any" class="form-control" id="worst_compactness" name="worst_compactness" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="worst_concavity" class="form-label">Worst Concavity</label>
+                                    <input type="number" step="any" class="form-control" id="worst_concavity" name="worst_concavity" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="worst_concave_points" class="form-label">Worst Concave Points</label>
+                                    <input type="number" step="any" class="form-control" id="worst_concave_points" name="worst_concave_points" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="worst_symmetry" class="form-label">Worst Symmetry</label>
+                                    <input type="number" step="any" class="form-control" id="worst_symmetry" name="worst_symmetry" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="worst_fractal_dimension" class="form-label">Worst Fractal Dimension</label>
+                                    <input type="number" step="any" class="form-control" id="worst_fractal_dimension" name="worst_fractal_dimension" required>
+                                </div>
+                                
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn btn-primary">Get Breast Cancer Test Result</button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <div id="result" class="mt-4" style="display: none;">
+                            <div class="alert alert-info" role="alert">
+                                <h4 class="alert-heading">Test Result</h4>
+                                <p id="resultText"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h5 class="m-0 font-weight-bold text-primary">About Breast Cancer Prediction</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>This breast cancer prediction tool uses a machine learning model trained on the Wisconsin Breast Cancer Dataset. The model analyzes cell nuclei characteristics from a digitized image of a fine needle aspirate (FNA) of a breast mass to classify tumors as malignant or benign.</p>
+                        
+                        <h6>Input Parameters:</h6>
+                        <ul>
+                            <li><strong>Mean values:</strong> Mean of the features computed for each cell nucleus</li>
+                            <li><strong>Error values:</strong> Standard error of the features computed for each cell nucleus</li>
+                            <li><strong>Worst values:</strong> "Worst" or largest mean value for each feature computed for each cell nucleus</li>
+                        </ul>
+                        
+                        <div class="alert alert-warning">
+                            <strong>Disclaimer:</strong> This tool is for educational purposes only and should not replace professional medical advice. Always consult with a healthcare provider for diagnosis and treatment.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/breast-cancer.js') }}"></script>
+</body>
+</html> 

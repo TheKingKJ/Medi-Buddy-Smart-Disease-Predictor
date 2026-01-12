@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medi-buddy | Smart Disease Predictor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 bg-dark sidebar">
+                <div class="sidebar-heading text-center py-4">
+                    <h2 class="text-white"><i class="bi bi-hospital"></i> Medi-buddy</h2>
+                    <p class="text-light">Smart Disease Predictor</p>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="/static/html/index.html" class="list-group-item list-group-item-action bg-dark text-white active">
+                        <i class="bi bi-house-door me-2"></i> Home
+                    </a>
+                    <a href="/static/html/diabetes.html" class="list-group-item list-group-item-action bg-dark text-white">
+                        <i class="bi bi-activity me-2"></i> Diabetes Prediction
+                    </a>
+                    <a href="/static/html/heart.html" class="list-group-item list-group-item-action bg-dark text-white">
+                        <i class="bi bi-heart me-2"></i> Heart Disease Prediction
+                    </a>
+                    <a href="/static/html/parkinsons.html" class="list-group-item list-group-item-action bg-dark text-white">
+                        <i class="bi bi-person me-2"></i> Parkinsons Prediction
+                    </a>
+                    <a href="/static/html/breast-cancer.html" class="list-group-item list-group-item-action bg-dark text-white">
+                        <i class="bi bi-asterisk me-2"></i> Breast Cancer Prediction
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Main content -->
+            <div class="col-md-9 col-lg-10 main-content">
+                <div class="jumbotron text-center p-5">
+                    <h1 class="display-4">Welcome to Medi-buddy</h1>
+                    <p class="lead">A smart, AI-powered disease prediction system for early diagnosis</p>
+                    <hr class="my-4">
+                    <p>Choose a disease category from the sidebar to begin your prediction</p>
+                </div>
+                
+                <div class="row mt-5">
+                    <!-- Diabetes Card -->
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="bi bi-activity display-1 text-primary"></i>
+                                <h5 class="card-title mt-3">Diabetes Prediction</h5>
+                                <p class="card-text">Predict diabetes risk based on health metrics</p>
+                                <a href="/static/html/diabetes.html" class="btn btn-outline-primary">Begin Test</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Heart Disease Card -->
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="bi bi-heart display-1 text-danger"></i>
+                                <h5 class="card-title mt-3">Heart Disease Prediction</h5>
+                                <p class="card-text">Check heart health risk factors</p>
+                                <a href="/static/html/heart.html" class="btn btn-outline-danger">Begin Test</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Parkinsons Card -->
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="bi bi-person display-1 text-success"></i>
+                                <h5 class="card-title mt-3">Parkinsons Prediction</h5>
+                                <p class="card-text">Analyze voice features to detect Parkinson's</p>
+                                <a href="/static/html/parkinsons.html" class="btn btn-outline-success">Begin Test</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Breast Cancer Card -->
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="bi bi-asterisk display-1 text-warning"></i>
+                                <h5 class="card-title mt-3">Breast Cancer Prediction</h5>
+                                <p class="card-text">Evaluate breast cell features for cancer markers</p>
+                                <a href="/static/html/breast-cancer.html" class="btn btn-outline-warning">Begin Test</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-5 p-4 bg-light rounded">
+                    <h3>About Medi-buddy</h3>
+                    <p>Medi-buddy is an advanced disease prediction system that uses machine learning algorithms to predict the likelihood of various diseases based on patient data. This tool is designed to assist healthcare professionals in early diagnosis and is not intended to replace professional medical advice.</p>
+                    <p>Always consult with a qualified healthcare provider for proper diagnosis and treatment.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
